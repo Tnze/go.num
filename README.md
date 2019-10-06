@@ -6,7 +6,10 @@ Mainly implemented int->Chinese
 ```go
 package main
 
-import "github.com/Tnze/go.num/v2/zh"
+import (
+	"fmt"
+	"github.com/Tnze/go.num/v2/zh"
+)
 
 func main() {
 	fmt.Print(zh.String(1234))
