@@ -4,40 +4,37 @@ var nums = [...]string{"零", "一", "二", "三", "四", "五", "六", "七", "
 var secs = [...]string{"", "万", "亿", "万亿", "亿亿"}
 var chns = [...]string{"", "十", "百", "千"}
 
-func String(num int64) string {
-
-	if num == 0 {
-		return "零"
-	}
-	if num < 0 {
-		return "负" + String(-num)
+func String(num uint64) (str string) {
+	if num == 0 { // 为零时直接返回
+		return nums[0]
 	}
 
-	var str string
-	var pos int
-	var zero bool
+	var pos int       // 当前节数
+	var needzero bool // 下一个节是否需要补零
 	for num > 0 {
 		sec := num % 10000
-		if zero {
+
+		if needzero { // 需要时补零
 			str = nums[0] + str
 		}
 
 		secstr := secString(sec)
-		if sec != 0 {
-			secstr += secs[pos]
+		if sec != 0 { // 根据需要添加节权
+			str = secstr + secs[pos] + str
+		} else {
+			str = secstr + str
 		}
-		str = secstr + str
 
-		zero = (sec < 1000) && (sec > 0)
+		needzero = (sec < 1000) && (sec > 0)
 
 		num /= 10000
 		pos++
 	}
 
-	return str
+	return
 }
 
-func secString(sec int64) string {
+func secString(sec uint64) string {
 	var str string
 	var pos int
 	var zero = true

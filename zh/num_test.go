@@ -4,7 +4,7 @@ import "testing"
 
 func TestString(t *testing.T) {
 	var testdata = []struct {
-		num int64
+		num uint64
 		str string
 	}{
 		{0, "零"},
