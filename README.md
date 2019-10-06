@@ -12,7 +12,19 @@ import (
 )
 
 func main() {
-	fmt.Print(zh.Uint64(1234).String())
+	// 数字转中文
+	fmt.Print(zh.Uint64(1234))
 	// Output: 一千二百三十四
+}
+```
+
+```go
+func main() {
+	// 中文转数字
+	var num zh.Uint64
+	err := fmt.Scan(&num)
+	// if err!=nil {...}
+
+	fmt.Println(uint64(num))
 }
 ```
