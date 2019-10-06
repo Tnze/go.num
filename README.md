@@ -1,12 +1,15 @@
 # go.num
 
 Mainly implemented int->Chinese
-主要实现了整数转中文对算法
+主要实现了整数转中文算法
 
 ```go
 package main
 
-import "github.com/Tnze/go.num/v2/zh"
+import (
+	"fmt"
+	"github.com/Tnze/go.num/v2/zh"
+)
 
 func main() {
 	fmt.Print(zh.String(1234))
