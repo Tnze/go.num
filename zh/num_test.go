@@ -1,6 +1,9 @@
 package zh
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestString(t *testing.T) {
 	var testdata = []struct {
@@ -52,4 +55,10 @@ func TestString(t *testing.T) {
 			t.Errorf("spell %d error: return %q, want %q", v.num, str, v.str)
 		}
 	}
+}
+
+func ExampleString() {
+	fmt.Print(String(1234))
+
+	// Output: 一千二百三十四
 }
