@@ -13,5 +13,5 @@ func main() {
 		fmt.Print(err)
 		return
 	}
-	fmt.Print(uint64(num))
+	fmt.Println(uint64(num))
 }

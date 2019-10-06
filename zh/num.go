@@ -84,35 +84,37 @@ var words = map[rune]uint64{
 
 func (num *Uint64) Scan(state fmt.ScanState, verb rune) error {
 	var number, sec uint64
+
 	for {
+		// 读取一个字
 		v, _, err := state.ReadRune()
 		if err == io.EOF {
-			sec += number
-			*num += Uint64(sec)
-			return nil
+			break
 		} else if err != nil {
 			return err
 		}
-		n, ok := words[v]
 
-		if ok {
+		if n, ok := words[v]; ok {
+			// 是数字
 			number = n
-		} else {
-			unit, ok := pairs[v]
-			if !ok {
-				sec += number
-				*num += Uint64(sec)
-				return nil
-			}
+		} else if unit, ok := pairs[v]; ok {
+			// 是单位
 			if unit.isUnit {
-				sec = (sec + number) * unit.value
-				*num += Uint64(sec)
+				// 是权
+				*num += Uint64((sec + number) * unit.value)
 				sec = 0
 			} else {
 				sec += (number * unit.value)
 			}
 
 			number = 0
+
+		} else {
+			// 其他字符
+			break
 		}
 	}
+
+	*num += Uint64(sec + number)
+	return nil
 }

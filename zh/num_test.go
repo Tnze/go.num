@@ -75,7 +75,7 @@ func TestUint64_Scan(t *testing.T) {
 }
 
 func ExampleString() {
-	fmt.Print(Uint64(1234).String())
+	fmt.Print(Uint64(1234))
 
 	// Output: 一千二百三十四
 }
