@@ -98,7 +98,12 @@ func (num *Uint64) Scan(state fmt.ScanState, verb rune) error {
 		if ok {
 			number = n
 		} else {
-			unit := pairs[v]
+			unit, ok := pairs[v]
+			if !ok {
+				sec += number
+				*num += Uint64(sec)
+				return nil
+			}
 			if unit.isUnit {
 				sec = (sec + number) * unit.value
 				*num += Uint64(sec)

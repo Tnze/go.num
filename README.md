@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	fmt.Print(zh.String(1234))
+	fmt.Print(zh.Uint64(1234).String())
 	// Output: 一千二百三十四
 }
 ```
