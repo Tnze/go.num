@@ -22,9 +22,12 @@ func main() {
 func main() {
 	// 中文转数字
 	var num zh.Uint64
-	err := fmt.Scan(&num)
-	// if err!=nil {...}
+	_, err := fmt.Sscan("三百八十六万七千三百五十一", &num)
+	if err != nil {
+		// ....
+	}
 
 	fmt.Println(uint64(num))
+	// Output: 3867351
 }
 ```
