@@ -70,16 +70,16 @@ var pairs = map[rune]struct {
 	value  uint64
 	isUnit bool
 }{
-	'十': {10, false},
-	'百': {100, false},
-	'千': {1000, false},
+	'拾': {10, false},
+	'佰': {100, false},
+	'仟': {1000, false},
 	'万': {10000, true},
 	'亿': {100000000, true},
 }
 
 var words = map[rune]uint64{
-	'零': 0, '一': 1, '二': 2, '三': 3, '四': 4,
-	'五': 5, '六': 6, '七': 7, '八': 8, '九': 9,
+	'零': 0, '壹': 1, '贰': 2, '叁': 3, '肆': 4,
+	'伍': 5, '陆': 6, '柒': 7, '捌': 8, '玖': 9,
 }
 
 func (num *Uint64) Scan(state fmt.ScanState, verb rune) error {
