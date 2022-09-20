@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/Tnze/go.num/v2/zh"
+	"github.com/Tnze/go.num/v2/zh_tr"
 )
 
 func main() {
@@ -14,4 +15,7 @@ func main() {
 		return
 	}
 	fmt.Println(uint64(num))
+
+	// 繁体转换
+	fmt.Println(zh_tr.Uint64(44544))
 }
